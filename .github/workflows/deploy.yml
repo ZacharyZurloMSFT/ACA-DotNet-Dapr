@@ -46,12 +46,12 @@ jobs:
           az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }}
 
     - name: Creating resources
-      uses: azure/CLI@v1
+      uses: azure/arm-deploy@v1
       with:
-        inlineScript: >
-          echo "Creating resources"
-
-          az deployment group create --resource-group ${{ env.RESOURCE_GROUP_NAME }} --template-file '/github/workspace/Azure/main.bicep' --debug
+        subscriptionId: ${{ secrets.Azure_Subscription }}
+        resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}
+        template: ./Azure/main.bicep
+        failOnStdErr: false
 
   build:
     runs-on: ubuntu-latest
