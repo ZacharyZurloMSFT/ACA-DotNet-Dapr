@@ -29,7 +29,7 @@ resource env 'Microsoft.App/managedEnvironments@2023-11-02-preview' = {
   name: '${baseName}env'
   location: location
   properties: {
-    zoneRedundant: true
+    zoneRedundant: false
     // appLogsConfiguration: {
       // destination: 'none'
       // logAnalyticsConfiguration: {
