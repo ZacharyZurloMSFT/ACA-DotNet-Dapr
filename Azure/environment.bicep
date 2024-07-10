@@ -28,7 +28,8 @@ param location string = 'eastus'
 resource env 'Microsoft.App/managedEnvironments@2023-11-02-preview' = {
   name: '${baseName}env'
   location: location
-  // properties: {
+  properties: {
+    zoneRedundant: true
     // appLogsConfiguration: {
       // destination: 'none'
       // logAnalyticsConfiguration: {
@@ -36,7 +37,7 @@ resource env 'Microsoft.App/managedEnvironments@2023-11-02-preview' = {
       //   sharedKey: logs.listKeys().primarySharedKey
       // }
     // }
-  // }
+  }
 }
 
 output id string = env.id
