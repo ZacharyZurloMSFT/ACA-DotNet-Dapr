@@ -26,7 +26,7 @@ param location string = 'eastus'
 // }
 
 resource env 'Microsoft.App/managedEnvironments@2023-11-02-preview' = {
-  name: '${baseName}env'
+  name: 'aca-env-zurlotech'
   location: location
   properties: {
     zoneRedundant: false
