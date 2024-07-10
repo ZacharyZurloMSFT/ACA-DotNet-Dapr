@@ -25,7 +25,7 @@ param location string = 'eastus'
 //   }
 // }
 
-resource env 'Microsoft.App/managedEnvironments@2022-01-01-preview' = {
+resource env 'Microsoft.App/managedEnvironments@2023-11-02-preview' = {
   name: '${baseName}env'
   location: location
   properties: {
