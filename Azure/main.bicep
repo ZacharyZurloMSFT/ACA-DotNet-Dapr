@@ -2,7 +2,7 @@ param location string = resourceGroup().location
 
 // create the azure container registry
 resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
-  name: toLower('${resourceGroup().name}acr')
+  name: 'acrzurlotech'
   location: location
   sku: {
     name: 'Basic'
@@ -14,7 +14,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
 
 // create the aca environment
 module env 'environment.bicep' = {
-  name: 'containerAppEnvironment'
+  name: 'aca-env-zurlotech'
   params: {
     location: location
   }
@@ -26,14 +26,14 @@ var shared_config = [
     name: 'ASPNETCORE_ENVIRONMENT'
     value: 'Development'
   }
-  {
-    name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
-    value: env.outputs.appInsightsInstrumentationKey
-  }
-  {
-    name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
-    value: env.outputs.appInsightsConnectionString
-  }
+  // {
+  //   name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
+  //   value: env.outputs.appInsightsInstrumentationKey
+  // }
+  // {
+  //   name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
+  //   value: env.outputs.appInsightsConnectionString
+  // }
 ]
 
 // create the products api container app
